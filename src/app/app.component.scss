@@ -1,5 +1,16 @@
 main {
     padding: 40px;
+    .hint {
+        position: fixed;
+        top: 100px;
+        right: 50%;
+        width: 100px;
+        height: 30px;
+        border: 1px solid #999999;
+        text-align: center;
+        line-height: 30px;
+    }
+
     span {
         display: inline-block;
         width: 100px;
@@ -23,6 +34,7 @@ main {
 
     .Num {
         height: 30px;
+
         input {
             width: 500px;
             height: 100%;
@@ -33,10 +45,12 @@ main {
             border-radius: 4px;
         }
     }
+
     .result {
         span {
             float: left;
         }
+
         .result-box {
             display: inline-block;
             width: 500px;
@@ -46,15 +60,26 @@ main {
             border-radius: 4px;
             overflow: auto;
             padding: 8px;
-            p {
-                margin: 2px 0;
-                color: #555555;
-                letter-spacing: normal;
-                word-spacing: normal;
-                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+            .result-item {
+                display: flex;
+                p {
+                    margin: 2px 0;
+                    color: #555555;
+                    letter-spacing: normal;
+                    word-spacing: normal;
+                    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                }
+
+                .result-copy {
+                    color: #367ab6;
+                    margin-left: 10px;
+                    cursor: pointer;
+                }
             }
         }
     }
+
     .count {
         position: fixed;
         right: 20px;

@@ -11,6 +11,8 @@ export class AppComponent implements OnInit {
   count = 0
   num = 5;
   list: string[] = [];
+  hintText = '';
+  hintShow = false;
 
   constructor(
     private _apiSer: ApiService
@@ -28,6 +30,18 @@ export class AppComponent implements OnInit {
       const id = uuid();
       this.list.push(id);
     }
+  }
+
+  onCopy(data: string) {
+    let timer: any;
+    navigator.clipboard.writeText(data).then(() => {
+      this.hintShow = true;
+      this.hintText = "复制成功！"
+      !!timer && clearTimeout(timer);
+      timer = setTimeout(() => {
+        this.hintShow = false;
+      }, 500)
+    })
   }
 
   ngOnInit(): void {

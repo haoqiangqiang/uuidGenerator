@@ -1,4 +1,5 @@
 <main>
+  <div class="hint" *ngIf="hintShow">{{hintText}}</div>
   <div class="count">访问次数: {{count}}</div>
   <div class="Num">
     <span>生成数量: </span>
@@ -11,7 +12,10 @@
     <span>结果: </span>
     <div class="result-box">
       <ng-container *ngFor="let item  of list">
-        <p class="result-item">{{item}}</p>
+        <div class="result-item">
+          <p>{{item}}</p>
+          <div class="result-copy" (click)="onCopy(item)">复制</div>
+        </div>
       </ng-container>
     </div>
   </div>
