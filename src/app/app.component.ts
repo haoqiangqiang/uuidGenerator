@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
-import { v4 as uuid} from 'uuid'
+import { Component, OnInit } from '@angular/core';
+import { v4 as uuid } from 'uuid';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  count = 0
   num = 5;
   list: string[] = [];
+
+  constructor(
+    private _apiSer: ApiService
+  ) {}
 
   generate() {
     this.list = [];
@@ -22,5 +28,12 @@ export class AppComponent {
       const id = uuid();
       this.list.push(id);
     }
+  }
+
+  ngOnInit(): void {
+    this._apiSer.setCount().subscribe();
+    this._apiSer.getCount().subscribe((res: any) => {
+      this.count = res;
+    })
   }
 }
